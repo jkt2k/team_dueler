@@ -42,23 +42,30 @@ class Hero:
             return block_sum
     def take_damage(self, damage):
         self.current_health-=(damage-self.defend())
-    
-
-        
+    def is_alive(self):
+        if self.current_health<=0:
+            return False
+        else:
+            return True
+    def fight(self,opponent):
+        if len(self.abilities)==0 and len(opponent.abilities==0):
+            print("Draw")
+        else:
+            opponent.take_damage(self.attack()-opponent.defend())
+            if not opponent.is_alive():
+                print(self.name+" wins!")
+            else:
+                opponent.fight(self)
 
 if __name__ == "__main__":
-    # If you run this file from the terminal
-    # this block of code is executed.
-    ability = Ability("Great Debugging", 50)
-    another_ability = Ability("Smarty Pants", 90)
-    hero = Hero("Grace Hopper", 200)
-    hero.add_ability(ability)
-    hero.add_ability(another_ability)
-    hey=Armor("heyyyy",20)
-    hero.add_armor(hey)
-    print(hero.attack())
-    print(hero.armor())
-    print(hero.defend())
-    print(hero.current_health)
-    hero.take_damage(50)
-    print(hero.current_health)
+    hero1 = Hero("Wonder Woman", 100)
+    hero2 = Hero("Dumbledore", 100)
+    ability1 = Ability("Super Speed", 50)
+    ability2 = Ability("Super Eyes", 50)
+    ability3 = Ability("Wizard Wand", 50)
+    ability4 = Ability("Wizard Beard", 50)
+    hero1.add_ability(ability1)
+    hero1.add_ability(ability2)
+    hero2.add_ability(ability3)
+    hero2.add_ability(ability4)
+    hero1.fight(hero2)
