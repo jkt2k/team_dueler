@@ -56,6 +56,9 @@ class Hero:
                 print(self.name+" wins!")
             else:
                 opponent.fight(self)
+class Weapon(Ability):
+    def attack(self):
+        return random.randint(self.attack_strength/2,self.attack_strength)
 
 if __name__ == "__main__":
     hero1 = Hero("Wonder Woman", 100)
