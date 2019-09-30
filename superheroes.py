@@ -68,8 +68,6 @@ class Hero:
         self.deaths+=num_deaths
     def add_weapon(self, weapon):
         self.abilities.append(weapon)
-    def add_armor(self, armor):
-        self.armors.append(armor)
 class Weapon(Ability):
     def attack(self):
         return random.randint(self.attack_strength//2,self.attack_strength)
@@ -125,7 +123,14 @@ class Team():
             for hero in self.heroes:
                 print(hero.name+": "+hero.kills/hero.deaths+" KD")
 
-# • Team Class 1. init: Parameters: name: String 2. addhero: Parameters: hero:String 3. removehero: Parameters name: String 4. viewallheroes: Parameters: None
+class Arena:
+    def __init__(self):
+        self.team_one=None
+        self.team_two=None
+    def create_ability(self):
+        ability_name=input("Enter ability name: ")
+        ability_strength=input("Enter ability strength: ")
+        return Ability(ability_name,ability_strength)
 
 if __name__ == "__main__":
     hero1 = Hero("Wonder Woman", 100)
