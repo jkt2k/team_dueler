@@ -23,7 +23,7 @@ class Hero:
     def attack(self):
         attack_sum=0
         for ability in self.abilities:
-            attack_sum=attack_sum+ability.attack()
+            attack_sum+=ability.attack()
         return attack_sum
     def add_armor(self, armor):
         self.armors.append(armor)
@@ -58,7 +58,24 @@ class Hero:
                 opponent.fight(self)
 class Weapon(Ability):
     def attack(self):
-        return random.randint(self.attack_strength/2,self.attack_strength)
+        return random.randint(self.attack_strength//2,self.attack_strength)
+
+class Team():
+    def __init__(self,name):
+        self.name=name
+        self.heroes=[]
+    def add_hero(self,hero):
+        self.heroes.append(hero)
+    def remove_hero(self,hero):
+        for i, hero in enumerate(self.heroes):
+            self.heroes.pop(i)
+        else:
+            return 0
+    def view_all_heroes(self):
+        for hero in self.heroes:
+            print(hero.name)
+
+# • Team Class 1. init: Parameters: name: String 2. addhero: Parameters: hero:String 3. removehero: Parameters name: String 4. viewallheroes: Parameters: None
 
 if __name__ == "__main__":
     hero1 = Hero("Wonder Woman", 100)
