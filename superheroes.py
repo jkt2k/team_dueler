@@ -66,6 +66,8 @@ class Hero:
         self.kills+=num_kills
     def add_deaths(self,num_deaths):
         self.deaths+=num_deaths
+    def add_weapon(self, weapon):
+        self.abilities.append(weapon)
 class Weapon(Ability):
     def attack(self):
         return random.randint(self.attack_strength//2,self.attack_strength)
