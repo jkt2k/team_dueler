@@ -1,4 +1,5 @@
 import random
+import unittest
 
 class Ability:
     def __init__(self, name, attack_strength):
@@ -76,6 +77,7 @@ class Team():
     def __init__(self,name):
         self.name=name
         self.heroes=[]
+        assert type(self.name)==str, "Team name not a string"
     def add_hero(self,hero):
         self.heroes.append(hero)
     def remove_hero(self,hero):
@@ -138,6 +140,8 @@ class Arena:
     def __init__(self):
         self.team_one=Team("Team one")
         self.team_two=Team("Team two")
+        assert type(self.team_one)==Team, "Team is incorrect type"
+        assert type(self.team_two)==Team, "Team is incorrect type"
     def create_ability(self):
         ability_name=input("Enter ability name: ")
         ability_strength=int(input("Enter ability strength: "))
